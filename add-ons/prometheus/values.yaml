@@ -1,5 +1,7 @@
 server:
   retention: 1h
+  service:
+    type: LoadBalancer
 
   resources:
     requests:

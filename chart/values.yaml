@@ -1,5 +1,5 @@
 # Global Values
-repoUrl: 'git@bitbucket.org:ecoreasoning/eks-addons.git'
+repoUrl: 'https://github.com/chickencordonbleu/eks-blueprints-add-ons.git'
 targetRevision: HEAD
 region: ''
 account: ''
