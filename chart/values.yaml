@@ -67,6 +67,9 @@ prometheus:
   serviceAccountName:
   roleArn:
   ampWorkspaceUrl:
+  server:
+    service:
+      type: LoadBalancer
 
 # Metrics Server Values
 sparkOperator:
