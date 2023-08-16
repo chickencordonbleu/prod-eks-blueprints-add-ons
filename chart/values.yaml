@@ -62,7 +62,7 @@ metricsServer:
 
 # Prometheus Values
 prometheus:
-  enable: false
+  enable: true
   createNamespace: true
   serviceAccountName:
   roleArn:
