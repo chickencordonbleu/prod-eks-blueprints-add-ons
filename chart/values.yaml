@@ -1,0 +1,74 @@
+# Global Values
+repoUrl: 'git@bitbucket.org:ecoreasoning/eks-addons.git'
+targetRevision: HEAD
+region: ''
+account: ''
+clusterName: ''
+destinationServer: ''
+argoNamespace: ''
+argoProject: ''
+
+# AWS Load Balancer Controller Values
+awsLoadBalancerController:
+  enable: false
+  createNamespace: true
+  serviceAccountName:
+  podDisruptionBudget:
+    maxUnavailable: 1
+  respectIgnoreDifferences: true
+  ignoreDifferences:
+  - group: ""
+    kind: "Secret"
+    jsonPointers:
+    - /data
+  - group: "admissionregistration.k8s.io"
+    kind: "MutatingWebhookConfiguration"
+    jqPathExpressions:
+    - '.webhooks[]?.clientConfig.caBundle'
+  - group: "admissionregistration.k8s.io"
+    kind: "ValidatingWebhookConfiguration"
+    jqPathExpressions:
+    - '.webhooks[]?.clientConfig.caBundle'
+
+# Cert Manager Values
+certManager:
+  enable: false
+  createNamespace: true
+  serviceAccountName:
+
+# Nginx Values
+ingressNginx:
+  enable: false
+  createNamespace: true
+
+# Grafana default Values
+grafana:
+  enable: false
+  serviceAccount:
+    create: false
+
+# Karpenter Values
+karpenter:
+  enable: false
+  createNamespace: true
+  serviceAccountName:
+  controllerClusterEndpoint:
+  awsDefaultInstanceProfile:
+  interruptionQueueName:
+
+# Metrics Server Values
+metricsServer:
+  enable: false
+
+# Prometheus Values
+prometheus:
+  enable: false
+  createNamespace: true
+  serviceAccountName:
+  roleArn:
+  ampWorkspaceUrl:
+
+# Metrics Server Values
+sparkOperator:
+  enable: false
+  createNamespace: true
