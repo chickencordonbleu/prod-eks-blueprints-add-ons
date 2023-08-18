@@ -46,6 +46,9 @@ grafana:
   enable: false
   serviceAccount:
     create: false
+  server:
+    service:
+      type: Ingress
 
 # Karpenter Values
 karpenter:
