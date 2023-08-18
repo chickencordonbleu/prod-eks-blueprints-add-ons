@@ -47,7 +47,7 @@ grafana:
   serviceAccount:
     create: false
   service:
-    type: Ingress
+    type: LoadBalancer
 
 # Karpenter Values
 karpenter:
