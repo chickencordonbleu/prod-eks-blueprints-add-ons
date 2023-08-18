@@ -43,10 +43,11 @@ ingressNginx:
 
 # Grafana default Values
 grafana:
-  enable: false
+  enable: true
   serviceAccount:
     create: false
   service:
+    enabled: true
     type: LoadBalancer
 
 # Karpenter Values
