@@ -1,4 +1,4 @@
-{{- if and (.Values.grafana) (.Values.grafana.enable) -}} 
+{{- if ((.Values.grafana).enable) }} 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -14,7 +14,6 @@ spec:
     targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
-        grafana:
         {{- toYaml .Values.grafana | nindent 8 }}
       parameters:
         - name: grafana.serviceAccount.name
