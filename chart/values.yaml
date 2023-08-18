@@ -10,7 +10,7 @@ argoProject: ''
 
 # AWS Load Balancer Controller Values
 awsLoadBalancerController:
-  enable: true
+  enable: false
   createNamespace: true
   serviceAccountName:
   podDisruptionBudget:
@@ -32,7 +32,7 @@ awsLoadBalancerController:
 
 # Cert Manager Values
 certManager:
-  enable: true
+  enable: false
   createNamespace: true
   serviceAccountName:
 
@@ -43,13 +43,13 @@ ingressNginx:
 
 # Grafana default Values
 grafana:
-  enable: true
+  enable: false
   serviceAccount:
     create: false
 
 # Karpenter Values
 karpenter:
-  enable: true
+  enable: false
   createNamespace: true
   serviceAccountName:
   controllerClusterEndpoint:
@@ -58,7 +58,7 @@ karpenter:
 
 # Metrics Server Values
 metricsServer:
-  enable: true
+  enable: false
 
 # Prometheus Values
 prometheus:
