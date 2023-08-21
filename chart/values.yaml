@@ -49,6 +49,11 @@ grafana:
   serviceType: LoadBalancer
   type: LoadBalancer
   specType: LoadBalancer
+  service:
+    enabled: true
+    type: LoadBalancer
+    port: 80
+    targetPort: 3000
 
 # Karpenter Values
 karpenter:
