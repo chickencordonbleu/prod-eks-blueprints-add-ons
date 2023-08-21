@@ -46,9 +46,7 @@ grafana:
   enable: true
   serviceAccount:
     create: false
-  service:
-    enabled: true
-    type: LoadBalancer
+  serviceType: LoadBalancer
 
 # Karpenter Values
 karpenter:
