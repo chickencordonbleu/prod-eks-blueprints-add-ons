@@ -14,9 +14,7 @@ spec:
     targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
-          serviceType: LoadBalancer
-          type: LoadBalancer
-          specType: LoadBalancer
+        {{- toYaml .Values.grafana | nindent 8 }}
       parameters:
         - name: grafana.serviceAccount.name
           value: {{ .Values.grafana.serviceAccountName }}
