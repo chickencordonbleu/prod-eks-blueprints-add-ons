@@ -38,7 +38,7 @@ kube-prometheus-stack:
               storage: 50Gi
 
   prometheusOperator:
-    admissionWebhooks:
+    admissionWebhooks: Fail
       enabled: false
       failurePolicy: Ignore
       patch:
