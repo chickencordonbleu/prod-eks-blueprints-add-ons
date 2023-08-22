@@ -43,17 +43,12 @@ ingressNginx:
 
 # Grafana default Values
 grafana:
-  enable: true
+  enable: false
   serviceAccount:
     create: false
-  serviceType: LoadBalancer
-  type: LoadBalancer
-  specType: LoadBalancer
   service:
     enabled: true
     type: LoadBalancer
-    port: 80
-    targetPort: 3000
 
 # Karpenter Values
 karpenter:
@@ -70,7 +65,7 @@ metricsServer:
 
 # Prometheus Values
 prometheus:
-  enable: true
+  enable: false
   createNamespace: true
   serviceAccountName:
   roleArn:
@@ -78,6 +73,10 @@ prometheus:
   server:
     service:
       type: LoadBalancer
+
+# Kube Prometheus Stack
+kubePrometheusStack:
+  enable: false
 
 # Metrics Server Values
 sparkOperator:
