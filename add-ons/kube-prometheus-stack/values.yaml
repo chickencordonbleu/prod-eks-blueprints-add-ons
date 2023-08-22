@@ -3,7 +3,7 @@ kube-prometheus-stack:
   ## Disable rules for unreachable components
   ##
   defaultRules:
-    create: true
+    create: false
     rules:
       etcd: false
       kubeScheduler: false
@@ -20,6 +20,8 @@ kube-prometheus-stack:
 
   prometheus:
     prometheusSpec:
+      service:
+        type: LoadBalancer
       ## Prometheus StorageSpec for persistent data on AWS EBS
       ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
       ##
