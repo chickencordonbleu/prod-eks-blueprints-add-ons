@@ -27,7 +27,7 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: false
     syncOptions:
     - CreateNamespace=true
     - Replace=true
@@ -36,6 +36,6 @@ spec:
       limit: 1
       backoff:
         duration: 10s
-        factor: 2
+        factor: 1
         maxDuration: 1m
 {{- end -}}
