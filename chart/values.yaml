@@ -77,6 +77,8 @@ prometheus:
 # Kube Prometheus Stack
 kubePrometheusStack:
   enable: false
+  service:
+    type: LoadBalancer
 
 # Metrics Server Values
 sparkOperator:
