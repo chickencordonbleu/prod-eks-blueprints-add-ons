@@ -3,10 +3,13 @@ kube-prometheus-stack:
   ## Disable rules for unreachable components
   ##
   defaultRules:
-    create: false
+    create: true
     rules:
       etcd: false
       kubeScheduler: false
+      alertmanager: false
+  alertmanager:
+    enabled: false
   service:
     type: LoadBalancer
 
