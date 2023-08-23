@@ -10,6 +10,8 @@ kube-prometheus-stack:
     rules:
       etcd: false
       kubeScheduler: false
+  service:
+    type: LoadBalancer
 
   ## Disable component scraping for the kube controller manager, etcd, and kube-scheduler
   ## These components are not reachable on EKS
@@ -23,8 +25,6 @@ kube-prometheus-stack:
 
   prometheus:
     prometheusSpec:
-      service:
-        type: LoadBalancer
       ## Prometheus StorageSpec for persistent data on AWS EBS
       ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
       ##
@@ -38,13 +38,9 @@ kube-prometheus-stack:
               storage: 50Gi
 
   prometheusOperator:
-    admissionWebhooks: Fail
+    admissionWebhooks:
       enabled: false
       failurePolicy: Ignore
-      patch:
-        enabled: false
-    tlsProxy:
-      enabled: false
     tls:
       enabled: false
 
