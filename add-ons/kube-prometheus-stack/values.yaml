@@ -2,16 +2,13 @@ kube-prometheus-stack:
   ## Create default rules for monitoring the cluster
   ## Disable rules for unreachable components
   ##
+  crds:
+    enabled: true
   defaultRules:
     create: true
     rules:
       etcd: false
       kubeScheduler: false
-      alertmanager: false
-  alertmanager:
-    enabled: false
-  service:
-    type: LoadBalancer
 
   ## Disable component scraping for the kube controller manager, etcd, and kube-scheduler
   ## These components are not reachable on EKS
@@ -24,6 +21,8 @@ kube-prometheus-stack:
     enabled: false
 
   prometheus:
+    service:
+      type: LoadBalancer
     prometheusSpec:
       ## Prometheus StorageSpec for persistent data on AWS EBS
       ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
