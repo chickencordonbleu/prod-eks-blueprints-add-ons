@@ -90,4 +90,4 @@ externalDns:
   enable: false
   createNamespace: true
   serviceAccountName:
-  zoneIdFilter:
+  zoneIdFilter: Z0569073PD1T3C6QQTPA
