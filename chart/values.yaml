@@ -84,3 +84,10 @@ kubePrometheusStack:
 sparkOperator:
   enable: false
   createNamespace: true
+
+# External DNS Values
+externalDns:
+  enable: false
+  createNamespace: true
+  serviceAccountName:
+  zoneIdFilter:
