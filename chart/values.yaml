@@ -46,9 +46,6 @@ grafana:
   enable: false
   serviceAccount:
     create: false
-  service:
-    enabled: true
-    type: LoadBalancer
 
 # Karpenter Values
 karpenter:
@@ -70,15 +67,10 @@ prometheus:
   serviceAccountName:
   roleArn:
   ampWorkspaceUrl:
-  server:
-    service:
-      type: LoadBalancer
 
 # Kube Prometheus Stack
 kubePrometheusStack:
   enable: false
-  service:
-    type: LoadBalancer
 
 # Metrics Server Values
 sparkOperator:
