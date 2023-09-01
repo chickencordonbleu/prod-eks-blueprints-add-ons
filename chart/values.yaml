@@ -83,3 +83,7 @@ externalDns:
   createNamespace: true
   serviceAccountName:
   zoneIdFilter:
+
+# External Secrets Operator
+externalSecrets:
+  enable: false
