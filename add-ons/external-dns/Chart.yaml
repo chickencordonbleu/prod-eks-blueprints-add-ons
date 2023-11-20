@@ -17,4 +17,4 @@ appVersion: "1.0"
 dependencies:
   - name: external-dns
     version: 6.13.1
-    repository: "https://charts.bitnami.com/bitnami"
+    repository: https://charts.bitnami.com/bitnami
