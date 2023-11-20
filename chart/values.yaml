@@ -87,3 +87,7 @@ externalDns:
 # External Secrets Operator
 externalSecrets:
   enable: false
+
+# NVIDIA Device Plugin Values
+nvidiaDevicePlugin:
+  enable: false
