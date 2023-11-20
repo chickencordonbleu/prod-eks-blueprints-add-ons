@@ -91,3 +91,5 @@ externalSecrets:
 # NVIDIA Device Plugin Values
 nvidiaDevicePlugin:
   enable: false
+  createNamespace: true
+  
