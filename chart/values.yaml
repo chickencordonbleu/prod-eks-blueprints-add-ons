@@ -82,6 +82,7 @@ externalDns:
   enable: false
   createNamespace: true
   serviceAccountName:
+  zoneIdFilter:
   policy: sync
 
 # External Secrets Operator
