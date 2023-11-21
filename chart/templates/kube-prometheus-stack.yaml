@@ -30,12 +30,6 @@ spec:
       selfHeal: false
     syncOptions:
     - CreateNamespace=true
-    - Replace=true
+    - SkipSchemaValidation=true
     - ServerSideApply=true
-    retry:
-      limit: 1
-      backoff:
-        duration: 10s
-        factor: 1
-        maxDuration: 1m
 {{- end -}}
