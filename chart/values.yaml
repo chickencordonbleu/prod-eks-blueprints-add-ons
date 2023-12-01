@@ -1,5 +1,5 @@
 # Global Values
-repoUrl: 'https://github.com/chickencordonbleu/eks-blueprints-add-ons.git'
+repoUrl: 'https://github.com/chickencordonbleu/prod-eks-blueprints-add-ons.git'
 targetRevision: HEAD
 region: ''
 account: ''
@@ -30,22 +30,10 @@ awsLoadBalancerController:
     jqPathExpressions:
     - '.webhooks[]?.clientConfig.caBundle'
 
-# Cert Manager Values
-certManager:
-  enable: false
-  createNamespace: true
-  serviceAccountName:
-
 # Nginx Values
 ingressNginx:
   enable: false
   createNamespace: true
-
-# Grafana default Values
-grafana:
-  enable: false
-  serviceAccount:
-    create: false
 
 # Karpenter Values
 karpenter:
@@ -56,26 +44,9 @@ karpenter:
   awsDefaultInstanceProfile:
   interruptionQueueName:
 
-# Metrics Server Values
-metricsServer:
-  enable: false
-
-# Prometheus Values
-prometheus:
-  enable: false
-  createNamespace: true
-  serviceAccountName:
-  roleArn:
-  ampWorkspaceUrl:
-
 # Kube Prometheus Stack
 kubePrometheusStack:
   enable: false
-
-# Metrics Server Values
-sparkOperator:
-  enable: false
-  createNamespace: true
 
 # External DNS Values
 externalDns:
@@ -86,8 +57,4 @@ externalDns:
 
 # External Secrets Operator
 externalSecrets:
-  enable: false
-
-# NVIDIA Device Plugin Values
-nvidiaDevicePlugin:
   enable: false

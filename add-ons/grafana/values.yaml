@@ -1,8 +1,0 @@
-# for details on all options
-# https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
-
-service:
-  enabled: true
-  type: LoadBalancer
-  port: 80
-  targetPort: 3000
