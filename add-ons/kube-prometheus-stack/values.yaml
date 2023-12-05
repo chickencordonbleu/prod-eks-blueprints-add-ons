@@ -29,7 +29,7 @@ kube-prometheus-stack:
       tls:
         - hosts:
           - grafana.prod.openinnovation.ai
-      secretName: grafana.prod.openinnovation.ai-tls
+          secretName: grafana.prod.openinnovation.ai-tls
 
 
   ## Disable component scraping for the kube controller manager, etcd, and kube-scheduler
