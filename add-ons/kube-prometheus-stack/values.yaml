@@ -22,11 +22,11 @@ kube-prometheus-stack:
         external-dns.alpha.kubernetes.io/hostname: grafana.prod.openinnovation.ai
         cert-manager.io/cluster-issuer: acme-clusterissuer
         kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: true
       hosts:
         - grafana.prod.openinnovation.ai
       path: /
-      tls:
-        - grafana.prod.openinnovation.ai
+
 
   ## Disable component scraping for the kube controller manager, etcd, and kube-scheduler
   ## These components are not reachable on EKS
