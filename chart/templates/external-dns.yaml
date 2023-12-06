@@ -15,7 +15,22 @@ spec:
     helm:
       values: |
         external-dns:
-        {{- toYaml .Values.externalDns | nindent 10 }}
+          sources:
+            - service
+            - ingress
+          provider: "aws"
+          replicaCount: 2
+          podAntiAffinityPreset: soft
+          serviceAccount:
+            create: false
+            name: "external-dns-sa"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 40Mi
+            limits:
+              cpu: 300m
+              memory: 65Mi
       parameters:
       - name: external-dns.aws.region
         value: {{ .Values.region }}
