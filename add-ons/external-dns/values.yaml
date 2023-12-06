@@ -1,5 +1,17 @@
 external-dns:
+  sources:
+    - service
+    - ingress
+  provider: "aws"
+  replicaCount: 2
+  podAntiAffinityPreset: soft
   serviceAccount:
     create: false
     name: "external-dns-sa"
-  provider: "aws"
+  resources:
+    requests:
+      cpu: 50m
+      memory: 40Mi
+    limits:
+      cpu: 300m
+      memory: 65Mi
