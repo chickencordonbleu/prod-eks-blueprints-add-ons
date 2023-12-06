@@ -7,7 +7,6 @@ clusterName: ''
 destinationServer: ''
 argoNamespace: ''
 argoProject: ''
-
 # AWS Load Balancer Controller Values
 awsLoadBalancerController:
   enable: false
@@ -29,12 +28,10 @@ awsLoadBalancerController:
     kind: "ValidatingWebhookConfiguration"
     jqPathExpressions:
     - '.webhooks[]?.clientConfig.caBundle'
-
 # Nginx Values
 ingressNginx:
   enable: false
   createNamespace: true
-
 # Karpenter Values
 karpenter:
   enable: false
@@ -43,18 +40,15 @@ karpenter:
   controllerClusterEndpoint:
   awsDefaultInstanceProfile:
   interruptionQueueName:
-
 # Kube Prometheus Stack
 kubePrometheusStack:
   enable: false
-
 # External DNS Values
 externalDns:
   enable: false
   createNamespace: true
   serviceAccountName:
   zoneIdFilter:
-
 # External Secrets Operator
 externalSecrets:
   enable: false
