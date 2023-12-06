@@ -15,7 +15,7 @@ spec:
       helm:
         values: |
           karpenter:
-          {{- toYaml .Values.karpenter | nindent 10 }}
+          {{- toYaml .Values.karpenter | nindent 12 }}
         parameters:
           - name: karpenter.serviceAccount.name
             value: {{ .Values.karpenter.serviceAccountName }}
