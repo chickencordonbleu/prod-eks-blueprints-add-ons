@@ -8,19 +8,22 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: {{ .Values.argoProject | default "default" }}
-  source:
-    repoURL: {{ .Values.repoUrl }}
-    path: add-ons/kube-prometheus-stack
-    targetRevision: {{ .Values.targetRevision }}
-    helm:
-      skipCrds: false
-      values: |
-        kube-prometheus-stack:
-          prometheus:
-            prometheusSpec:
-              podMonitorSelectorNilUsesHelmValues: false
-              serviceMonitorSelectorNilUsesHelmValues: false
-        {{- toYaml .Values.kubePrometheusStack | nindent 10 }}
+  sources:
+    - repoURL: {{ .Values.repoUrl }}
+      path: add-ons/kube-prometheus-stack
+      targetRevision: {{ .Values.targetRevision }}
+      helm:
+        skipCrds: false
+        values: |
+          kube-prometheus-stack:
+            prometheus:
+              prometheusSpec:
+                podMonitorSelectorNilUsesHelmValues: false
+                serviceMonitorSelectorNilUsesHelmValues: false
+          {{- toYaml .Values.kubePrometheusStack | nindent 12 }}
+    - repoURL: git@gitlab.com:openinnovationai/platform/infra/argocd-deploy.git
+      path: aws-prod/apps/eks-blueprints/kube-prometheus-stack
+      targetRevision: HEAD
   destination:
     server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
     namespace: kube-prometheus-stack
