@@ -129,7 +129,7 @@ kube-prometheus-stack:
       enabled: true
       minAvailable: 1
     prometheusSpec:
-      retention: 15d
+      retention: 30d
       retentionSize: ""
       replicas: 2
       logLevel: info
