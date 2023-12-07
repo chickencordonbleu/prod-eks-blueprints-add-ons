@@ -102,8 +102,8 @@ kube-prometheus-stack:
       certManager:
         enabled: true
         issuerRef:
-          name: "acme-clusterissuer"
-          kind: "ClusterIssuer"
+          name: "prometheus-self-signed-issuer"
+          kind: "Issuer"
   prometheus:
     service:
       type: ClusterIP
