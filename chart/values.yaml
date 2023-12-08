@@ -28,6 +28,11 @@ awsLoadBalancerController:
     kind: "ValidatingWebhookConfiguration"
     jqPathExpressions:
     - '.webhooks[]?.clientConfig.caBundle'
+# Cert Manager Values
+certManager:
+  enable: false
+  createNamespace: true
+  serviceAccountName:
 # Nginx Values
 ingressNginx:
   enable: false

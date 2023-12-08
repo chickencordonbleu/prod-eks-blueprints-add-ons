@@ -1,0 +1,25 @@
+cert-manager:
+  global:
+    priorityClassName: ""
+    podSecurityPolicy:
+      enabled: false
+      useAppArmor: true
+    logLevel: 3
+  installCRDs: true
+  replicaCount: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  serviceAccount:
+    create: false
+  extraArgs:
+    - --enable-certificate-owner-ref=true
+  resources:
+    requests:
+      cpu: 50m
+      memory: 35Mi
+    limits:
+      cpu: 200m
+      memory: 60Mi
