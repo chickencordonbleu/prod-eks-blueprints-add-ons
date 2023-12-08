@@ -8,17 +8,20 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: {{ .Values.argoProject | default "default" }}
-  source:
-    repoURL: {{ .Values.repoUrl }}
-    path: add-ons/cert-manager
-    targetRevision: {{ .Values.targetRevision }}
-    helm:
-      values: |
-        cert-manager:
-        {{- toYaml .Values.certManager | nindent 10 }}
-      parameters:
-      - name: cert-manager.serviceAccount.name
-        value: {{ .Values.certManager.serviceAccountName }}
+  sources:
+    - repoURL: {{ .Values.repoUrl }}
+      path: add-ons/cert-manager
+      targetRevision: {{ .Values.targetRevision }}
+      helm:
+        values: |
+          cert-manager:
+          {{- toYaml .Values.certManager | nindent 12 }}
+        parameters:
+        - name: cert-manager.serviceAccount.name
+          value: {{ .Values.certManager.serviceAccountName }}
+    - repoURL: git@gitlab.com:openinnovationai/platform/infra/argocd-deploy.git
+      path: aws-prod/apps/eks-blueprints/cert-manager
+      targetRevision: HEAD
   destination:
     server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
     namespace: cert-manager
