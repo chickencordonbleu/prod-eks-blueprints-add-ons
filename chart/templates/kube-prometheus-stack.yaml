@@ -35,4 +35,13 @@ spec:
     - CreateNamespace=true
     - SkipSchemaValidation=true
     - ServerSideApply=true
+  ignoreDifferences:
+    - group: monitoring.coreos.com
+      kind: ServiceMonitor
+      name: kube-prometheus-stack-kubelet
+      namespace: kube-prometheus-stack
+      jsonPointers:
+        - /spec/endpoints/0/relabelings
+        - /spec/endpoints/1/relabelings
+        - /spec/endpoints/2/relabelings
 {{- end -}}
