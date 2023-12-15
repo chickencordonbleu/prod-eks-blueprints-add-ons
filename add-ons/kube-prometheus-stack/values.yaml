@@ -71,7 +71,7 @@ kube-prometheus-stack:
       - name: 'test-alerts'
         webhook_configs:
         - send_resolved: true
-          url: 'http://prometheus-msteams:2000/test-alerts'
+          url: 'http://prometheus-msteams.prometheus-msteams.svc.cluster.local:2000/test-alerts'
       templates:
       - '/etc/alertmanager/config/*.tmpl'
     ingress:
