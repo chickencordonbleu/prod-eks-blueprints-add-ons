@@ -63,7 +63,7 @@ kube-prometheus-stack:
         repeat_interval: 12h
         receiver: 'test-alerts'
         routes:
-        - receiver: 'test-alerts'
+        - receiver: 'null'
           matchers:
             - alertname =~ "InfoInhibitor|Watchdog"
       receivers:
