@@ -91,26 +91,27 @@ kube-prometheus-stack:
         - hosts:
             - alertmanager.prod.openinnovation.ai
           secretName: alertmanager.prod.openinnovation.ai-tls
-    logFormat: logfmt
-    logLevel: info
-    replicas: 2
-    retention: 120h
-    storage:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: ""
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 50Gi
-    resources:
-      requests:
-        cpu: 50m
-        memory: 40Mi
-      limits:
-        cpu: 300m
-        memory: 65Mi
-    podAntiAffinity: soft
+    alertmanagerSpec:
+      logFormat: logfmt
+      logLevel: info
+      replicas: 2
+      retention: 120h
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: ""
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 50Gi
+      resources:
+        requests:
+          cpu: 50m
+          memory: 40Mi
+        limits:
+          cpu: 300m
+          memory: 65Mi
+      podAntiAffinity: soft
   kubeApiServer:
     enabled: true        
   kubelet:
@@ -189,7 +190,7 @@ kube-prometheus-stack:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            storageClassName: gp2
+            storageClassName: ""
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
