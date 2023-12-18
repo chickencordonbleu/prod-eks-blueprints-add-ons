@@ -15,12 +15,7 @@ spec:
       helm:
         skipCrds: false
         values: |
-          kube-prometheus-stack:
-            prometheus:
-              prometheusSpec:
-                podMonitorSelectorNilUsesHelmValues: false
-                serviceMonitorSelectorNilUsesHelmValues: false
-          {{- toYaml .Values.kubePrometheusStack | nindent 12 }}
+          {{- toYaml .Values.kubePrometheusStack | nindent 10 }}
     - repoURL: git@gitlab.com:openinnovationai/platform/infra/argocd-deploy.git
       path: aws-prod/apps/eks-blueprints/kube-prometheus-stack
       targetRevision: HEAD
