@@ -94,7 +94,7 @@ kube-prometheus-stack:
     alertmanagerSpec:
       logFormat: logfmt
       logLevel: info
-      replicas: 2
+      replicas: 1
       retention: 120h
       storage:
         volumeClaimTemplate:
