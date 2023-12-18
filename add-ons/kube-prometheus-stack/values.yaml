@@ -99,7 +99,7 @@ kube-prometheus-stack:
       storage:
         volumeClaimTemplate:
           spec:
-            storageClassName: ""
+            storageClassName: gp2
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
@@ -190,7 +190,7 @@ kube-prometheus-stack:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            storageClassName: ""
+            storageClassName: gp2
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
