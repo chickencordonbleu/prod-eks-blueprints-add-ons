@@ -63,15 +63,15 @@ kube-prometheus-stack:
         repeat_interval: 12h
         receiver: 'null'
         routes:
-          - matchers:
+          - receiver: 'null'
+            matchers:
               - alertname =~ "InfoInhibitor|Watchdog"
-            receiver: 'null'
-          - matchers:
+          - receiver: 'critical-prod'
+            matchers:
               severity: critical
-            receiver: 'critical-prod'
-          - matchers:
+          - receiver: 'warning-prod'             
+            matchers:
               severity: warning
-            receiver: 'warning-prod'
       receivers:
         - name: 'null'
         - name: 'test-alerts'
