@@ -68,10 +68,10 @@ kube-prometheus-stack:
               - alertname =~ "InfoInhibitor|Watchdog"
           - receiver: 'critical-prod'
             matchers:
-              severity: critical
+              - severity = critical
           - receiver: 'warning-prod'             
             matchers:
-              severity: warning
+              - severity = warning
       receivers:
         - name: 'null'
         - name: 'test-alerts'
