@@ -61,17 +61,31 @@ kube-prometheus-stack:
         group_wait: 30s
         group_interval: 5m
         repeat_interval: 12h
-        receiver: 'test-alerts'
+        receiver: 'null'
         routes:
-        - receiver: 'null'
-          matchers:
-            - alertname =~ "InfoInhibitor|Watchdog"
+          - matchers:
+              - alertname =~ "InfoInhibitor|Watchdog"
+            receiver: 'null'
+          - matchers:
+              severity: critical
+            receiver: 'critical-prod'
+          - matchers:
+              severity: warning
+            receiver: 'warning-prod'
       receivers:
-      - name: 'null'
-      - name: 'test-alerts'
-        webhook_configs:
-        - send_resolved: true
-          url: 'http://prometheus-msteams.prometheus-msteams.svc.cluster.local:2000/test-alerts'
+        - name: 'null'
+        - name: 'test-alerts'
+          webhook_configs:
+          - send_resolved: true
+            url: 'http://prometheus-msteams.prometheus-msteams.svc.cluster.local:2000/test-alerts'
+        - name: 'warning-prod'
+          webhook_configs:
+          - send_resolved: true
+            url: 'http://prometheus-msteams.prometheus-msteams.svc.cluster.local:2000/warning-prod'
+        - name: 'critical-prod'
+          webhook_configs:
+          - send_resolved: true
+            url: 'http://prometheus-msteams.prometheus-msteams.svc.cluster.local:2000/critical-prod'
       templates:
       - '/etc/alertmanager/config/*.tmpl'
     ingress:
