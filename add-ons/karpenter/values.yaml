@@ -41,5 +41,5 @@ karpenter:
     aws:
       clusterName:
       clusterEndpoint:
-      defaultInstanceProfile: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c
+      defaultInstanceProfile:
       interruptionQueueName:

@@ -43,7 +43,7 @@ karpenter:
   createNamespace: true
   serviceAccountName:
   controllerClusterEndpoint:
-  awsDefaultInstanceProfile:
+  awsDefaultInstanceProfile: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c
   interruptionQueueName:
 # Kube Prometheus Stack
 kubePrometheusStack:
