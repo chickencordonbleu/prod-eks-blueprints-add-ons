@@ -13,17 +13,50 @@ spec:
       path: add-ons/karpenter
       targetRevision: {{ .Values.targetRevision }}
       helm:
-        parameters:
-          - name: karpenter.serviceAccount.name
-            value: {{ .Values.karpenter.serviceAccountName }}
-          - name: karpenter.settings.aws.clusterName
-            value: {{ .Values.clusterName }}
-          - name: karpenter.settings.aws.clusterEndpoint
-            value: {{ .Values.karpenter.controllerClusterEndpoint }}
-          - name: karpenter.settings.aws.defaultInstanceProfile
-            value: {{ .Values.karpenter.awsDefaultInstanceProfile }}
-          - name: karpenter.settings.aws.interruptionQueueName
-            value: {{ .Values.karpenter.awsInterruptionQueueName }}
+        values: |
+          serviceAccount:
+            create: false
+          serviceMonitor:
+            enabled: true
+          replicas: 2
+          revisionHistoryLimit: 1
+          strategy:
+            rollingUpdate:
+              maxUnavailable: 1
+          podDisruptionBudget:
+            name: karpenter-pbd
+            maxUnavailable: 1
+          priorityClassName: system-cluster-critical
+          nodeSelector:
+            kubernetes.io/os: linux
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: karpenter.sh/provisioner-name
+                        operator: DoesNotExist
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: topology.kubernetes.io/zone
+              whenUnsatisfiable: ScheduleAnyway
+          tolerations:
+            - key: CriticalAddonsOnly
+              operator: Exists
+          controller:
+            resources:
+              requests:
+                cpu: 500m
+                memory: 200Mi
+              limits:
+                cpu: 1
+                memory: 500Mi
+          logLevel: debug
+          settings:
+            aws:
+              clusterName: ""
+              clusterEndpoint: ""
+              defaultInstanceProfile: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c
     - repoURL: git@gitlab.com:openinnovationai/platform/infra/argocd-deploy.git
       path: aws-prod/apps/eks-blueprints/karpenter
       targetRevision: HEAD
