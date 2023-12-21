@@ -9,7 +9,7 @@ karpenter:
     rollingUpdate:
       maxUnavailable: 1
   podDisruptionBudget:
-    name: karpenter-pbd
+    name: karpenter-pdb
     maxUnavailable: 1
   priorityClassName: system-cluster-critical
   nodeSelector:
