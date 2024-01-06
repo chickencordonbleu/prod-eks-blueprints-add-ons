@@ -24,7 +24,7 @@ spec:
           - name: karpenter.settings.aws.clusterEndpoint
             value: {{ .Values.karpenter.controllerClusterEndpoint }}
           - name: karpenter.settings.aws.defaultInstanceProfile
-            value: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c
+            value: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c #TODO: fix this hardcoded hack
           - name: karpenter.settings.aws.interruptionQueueName
             value: {{ .Values.karpenter.awsInterruptionQueueName }}
     - repoURL: git@gitlab.com:openinnovationai/platform/infra/argocd-deploy.git
