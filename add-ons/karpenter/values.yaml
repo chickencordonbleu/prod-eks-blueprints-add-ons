@@ -38,6 +38,9 @@ karpenter:
         memory: 500Mi
   logLevel: debug
   settings:
+    clusterName: prod-eks
+    clusterEndpoint: "https://99713B004F008C1231594E579D9CEA46.gr7.us-east-1.eks.amazonaws.com"
+    defaultInstanceProfile: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c
     aws:
       clusterName: "prod-eks"
       clusterEndpoint: ""
