@@ -8,28 +8,28 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: {{ .Values.argoProject | default "default" }}
-  source:
-    repoURL: {{ .Values.repoUrl }}
-    path: add-ons/karpenter
-    targetRevision: {{ .Values.targetRevision }}
-    helm:
-      values: |
-        karpenter:
-        {{- toYaml .Values.karpenter | nindent 12 }}
-      parameters:
-        - name: karpenter.serviceAccount.name
-          value: {{ .Values.karpenter.serviceAccountName }}
-        - name: karpenter.settings.aws.clusterName
-          value: {{ .Values.clusterName }}
-        - name: karpenter.settings.aws.clusterEndpoint
-          value: {{ .Values.karpenter.controllerClusterEndpoint }}
-        - name: karpenter.settings.aws.defaultInstanceProfile
-          value: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c #TODO: fix this hardcoded hack
-        - name: karpenter.settings.aws.interruptionQueueName
-          value: {{ .Values.karpenter.awsInterruptionQueueName }}
-#    - repoURL: git@gitlab.com:openinnovationai/platform/infra/argocd-deploy.git
-#      path: aws-prod/apps/eks-blueprints/karpenter
-#      targetRevision: HEAD
+  sources:
+    - repoURL: {{ .Values.repoUrl }}
+      path: add-ons/karpenter
+      targetRevision: {{ .Values.targetRevision }}
+      helm:
+        values: |
+          karpenter:
+          {{- toYaml .Values.karpenter | nindent 12 }}
+        parameters:
+          - name: karpenter.serviceAccount.name
+            value: {{ .Values.karpenter.serviceAccountName }}
+          - name: karpenter.settings.aws.clusterName
+            value: {{ .Values.clusterName }}
+          - name: karpenter.settings.aws.clusterEndpoint
+            value: {{ .Values.karpenter.controllerClusterEndpoint }}
+          - name: karpenter.settings.aws.defaultInstanceProfile
+            value: eks-d4c618af-8e49-8b34-bf05-cb5e842b756c #TODO: fix this hardcoded hack
+          - name: karpenter.settings.aws.interruptionQueueName
+            value: {{ .Values.karpenter.awsInterruptionQueueName }}
+    - repoURL: git@gitlab.com:openinnovationai/platform/infra/argocd-deploy.git
+      path: aws-prod/apps/eks-blueprints/karpenter-v33
+      targetRevision: HEAD
   destination:
     server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
     namespace: karpenter
